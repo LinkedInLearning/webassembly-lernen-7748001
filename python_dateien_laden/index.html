@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
+<script>
+async function main() {
+  const pyodide = await loadPyodide();
+  // Python-Dateien laden
+  const files = ["math_utils.py", "main.py"];
+  for (const file of files) {
+    const code = await (await fetch(file)).text();
+    pyodide.FS.writeFile(file, code);
+  }
+  // main.py ausführen
+  await pyodide.runPythonAsync("import main");
+}
+main();
+</script>
+</head>
+</html>

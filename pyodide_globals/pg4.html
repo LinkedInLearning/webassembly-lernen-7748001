@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Python in Wasm</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
+    <script>
+      async function main() {
+        const pyodide = await loadPyodide();
+        await pyodide.runPythonAsync(`
+counter = 0
+def inc():
+    global counter
+    counter += 1
+    return counter
+`);
+        const inc = pyodide.globals.get("inc");
+
+        console.log(inc()); // 1
+        console.log(inc()); // 2
+        console.log(inc()); // 3
+        console.log(inc()); // 4        
+        inc.destroy();
+      }
+      main();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Python in Wasm</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
+    <script>
+      async function main() {
+        const pyodide = await loadPyodide();
+        await pyodide.runPythonAsync(`
+          from js import document
+          h1 = document.createElement("h1")
+          h1.textContent = "DOM-Zugriff aus Python"
+          document.body.appendChild(h1)
+`);
+      }
+      main();
+    </script>
+  </body>
+</html>

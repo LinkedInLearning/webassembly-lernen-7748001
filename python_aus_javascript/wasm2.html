@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
+    <script>
+      async function main() {
+        const pyodide = await loadPyodide();
+        const result = pyodide.runPython(`
+2 + 3
+`);
+        console.log(result); // 5
+      }
+      main();
+    </script>
+  </head>
+</html>

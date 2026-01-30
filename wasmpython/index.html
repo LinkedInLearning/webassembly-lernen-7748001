@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Wasm Demo 2</title>
+</head>
+<body>
+   <h1>WebAssembly</h1>
+
+  <button id="run">OK</button>
+  <pre id="out"></pre>
+
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
+  <script>
+    async function main() {
+      const pyodide = await loadPyodide();
+      document.getElementById("run").onclick = async () => {
+        const result = await pyodide.runPythonAsync(`
+          def add(a, b):
+              return a + b
+          add(2, 3)
+        `);
+        document.getElementById("out").textContent = result;
+      }
+    }
+    main();
+  </script>
+</body>
+</html>

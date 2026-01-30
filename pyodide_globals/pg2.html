@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Python in Wasm</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
+    <script>
+      async function main() {
+        const pyodide = await loadPyodide();
+        await pyodide.runPythonAsync(`
+def add(a, b):
+    return a + b
+
+x = "Die Antwort ist"
+y = "Nein."
+z = ("Die Antwort ist",42,"Genau.")
+`);
+        const add = pyodide.globals.get("add");
+        const x = pyodide.globals.get("x");
+        const y = pyodide.globals.get("y");
+        const z = pyodide.globals.get("z");
+        console.log(x); // Im Grunde Proxy, aber automatisch konvertiert
+        console.log(add(2, 3)); // Im Grunde Proxy, aber automatisch konvertiert
+        console.log(y); // Im Grunde Proxy, aber automatisch konvertiert
+        console.log(z.toJs()); // explizit konvertiert
+
+        add.destroy();
+        if (x?.destroy) {
+          x.destroy();
+        }
+        if (y?.destroy) {
+          y.destroy();
+        }
+        if (z?.destroy) {
+          z.destroy();
+        }
+      }
+      main();
+    </script>
+  </body>
+</html>

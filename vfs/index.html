@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
+    <script>
+      async function main() {
+        const pyodide = await loadPyodide();
+
+        await pyodide.runPythonAsync(`
+        import os
+        print(os.listdir("."))
+        # Datei schreiben
+        with open("hello.txt", "w") as f:
+          f.write("Hallo virtuelles FS!")
+        print(os.listdir("."))
+        # Datei lesen
+        with open("hello.txt") as f:
+          content = f.read()
+        print(content)
+  `);
+      }
+      main();
+    </script>
+  </head>
+</html>

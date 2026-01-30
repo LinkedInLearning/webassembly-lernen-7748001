@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Python in Wasm</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
+    <script>
+      async function main() {
+        const pyodide = await loadPyodide();
+        pyodide.globals.set("js_val", "Die Antwort ist");
+        pyodide.globals.set("js_add", (a, b) => a + b);
+        await pyodide.runPythonAsync(`
+print(js_val)
+print(js_add(22, 20))
+`);
+      }
+      main();
+    </script>
+  </body>
+</html>

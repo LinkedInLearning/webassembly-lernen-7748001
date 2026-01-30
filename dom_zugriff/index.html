@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Python in Wasm</title>
+  </head>
+  <body>
+    <h1>Wasm für den Hintergrund, JavaScript für den DOM-Zugriff</h1>
+    <button id="run">Rechne mit Python</button>
+    <pre id="out"></pre>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
+    <script>
+      async function main() {
+        const pyodide = await loadPyodide();
+        document.getElementById("run").onclick = async () => {
+          const result = await pyodide.runPythonAsync(`
+          def add(a, b):
+              return a + b
+          add(2, 3)
+        `);
+          document.getElementById("out").textContent = result;
+        };
+      }
+      main();
+    </script>
+  </body>
+</html>
