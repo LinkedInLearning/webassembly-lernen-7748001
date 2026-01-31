@@ -14,14 +14,15 @@ Dieser Kurs ist in GitHub Codespaces integriert, eine sofort verfügbare Cloud-E
 
 ## Anleitung
 
-Dieses Repository nutzt nur den main-Branche für jedes Video im Kurs. Die Quellcodes und Ressourcen sind in Ordnern strukturiert, die nach dem jeweiligen Thema benannt und in den jeweiligen Videos zu erkennen sind.
+Dieses Repository nutzt nur den main-Branche für jedes Video im Kurs. Die Quellcodes und Ressourcen sind in Ordnern strukturiert, die nach dem jeweiligen Thema benannt und in den jeweiligen Videos zu erkennen sind. Die können das Repository clonen bzw. einen Fork bilden oder auch einfach die Dateien auf Ihren Rechner laden.
 
 ## Installation
 
 1. Um diese Übungsdateien nutzen zu können, müssen Sie folgendes installiert haben:
-   - [list of requirements for course]
+   - Python
+   - Einen beliebigen Editor oder Sie verwenden Codespaces
 2. Klonen Sie das Repository in Ihre lokale Maschine unter Verwendung von terminal (Mac), CMD (Windows) oder ein anderes Werkzeug mit grafischer Bedienoberfläche wie SourceTree.
-3. [Course-specific instructions]
+3. Im Kurs wird Pyodide verwendet. Den Umgang damit und voraus Sie zu achten haben, ist ausführliches Thema mehrerer Videos in dem Training.
 
 ### Autor
 
